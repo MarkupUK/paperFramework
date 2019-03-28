@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="20.1">
+    <meta>
+        <filters directoryPatterns="" filePatterns="newProject.xpr" positiveFilePatterns="" showHiddenFiles="false"/>
+        <options>
+            <serialized version="20.1" xml:space="preserve">
+                <serializableOrderedMap>
+                    <entry>
+                        <String>additional.frameworks.directories</String>
+                        <String-array>
+                            <String>/Users/yamahito/Dropbox/eXpertML/frameworks</String>
+                            <String>/Users/yamahito/Documents/IOP/frameworks</String>
+                            <String>/Users/yamahito/Documents/pubfactory/frameworks</String>
+                            <String>${pd}</String>
+                        </String-array>
+                    </entry>
+                    <entry>
+                        <String>frameworks.directory.url.with.editor.variables</String>
+                        <String>file:/C:/LocalCopy/Frameworks/15</String>
+                    </entry>
+                </serializableOrderedMap>
+            </serialized>
+        </options>
+    </meta>
+    <projectTree name="framework.xpr">
+        <folder path="."/>
+    </projectTree>
+</project>
