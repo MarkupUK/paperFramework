@@ -109,4 +109,10 @@
         </rule>
     </pattern>
     
+    <pattern id="empty-listitem">
+        <rule context="d:listitem/d:para">
+            <assert test="normalize-space()"><name path=".."/>/<name/> must not be empty</assert>
+        </rule>
+    </pattern>
+    
 </schema>
