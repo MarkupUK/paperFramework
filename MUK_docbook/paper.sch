@@ -51,6 +51,9 @@
                 xml', '\s')"/>
             <assert test=". = $allowed-langs">Value of language attribute should be one of: <value-of select="string-join($allowed-langs, ', ')"/>; got '<value-of select="."/>'</assert>            
         </rule>
+        <rule context="d:programlisting/d:co">
+            <assert test="preceding-sibling::node()[self::text() or self::*][matches(., '\s$')]" role="warning"><name/> should be preceded by whitespace</assert>
+        </rule>
     </pattern>
     
     <pattern id="title">
