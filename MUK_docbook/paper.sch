@@ -14,6 +14,12 @@
         </rule>
     </pattern>
     
+    <pattern id="trailing-whitespace" abstract="true">
+        <rule context="$element">
+            <report test="matches(., '[\p{Zs}\s]$')" role="warning"><name/> should not end with whitespace</report>
+        </rule>
+    </pattern>
+    
     <pattern id="trailing-punctuation" abstract="true">
         <rule context="$element">
             <report test="matches(normalize-space(.), '[\.,:;]$')" role="warning"><name/> should not end with punctuation</report>
@@ -22,6 +28,10 @@
     
     <pattern is-a="leading-whitespace">
         <param name="element" value="d:programlisting | d:title"/>
+    </pattern>
+    
+    <pattern is-a="trailing-whitespace">
+        <param name="element" value="d:biblioid"/>
     </pattern>
     
     <pattern id="programlisting">
