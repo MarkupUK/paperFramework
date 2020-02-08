@@ -4,6 +4,7 @@
     xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
     <ns uri="http://docbook.org/ns/docbook" prefix="d"/>
+    <ns uri="http://www.w3.org/1999/xlink" prefix="xlink"/>
     
     <let name="bib-ids" value="//d:bibliography//@xml:id"/>
     
@@ -71,11 +72,11 @@
         </rule>
     </pattern>
     
-    <pattern id="title">
-        <rule context="d:title">
+    <pattern id="whole-element-emphasis">
+        <rule context="d:title | d:personname">
             <sqf:fix id="remove-emphasis">
                 <sqf:description>
-                    <sqf:title>Strips emphasis from titles</sqf:title>
+                    <sqf:title>Strips whole-element emphasis</sqf:title>
                 </sqf:description>
                 <sqf:replace match="d:emphasis">
                     <sqf:copy-of select="node()"/>
@@ -118,6 +119,14 @@
     <pattern id="auto-generated-titles">
         <rule context="d:appendix">
             <report test="matches(d:title, '^Appendix [A-Z]?')"><name/> titles must not begin with 'Appendix [label]': <value-of select="d:title"/></report>
+        </rule>
+    </pattern>
+    
+    <pattern id="anchored-para-pseudo-footnote">
+        <rule context="d:para/d:anchor">
+            <report test="not(preceding-sibling::node())
+                and following-sibling::node()[1][self::text()][matches(., '\[[0-9]+\]')]
+                and following-sibling::d:link[@xlink:href]">This looks like a footnote: please use element footnote instead</report>
         </rule>
     </pattern>
     
