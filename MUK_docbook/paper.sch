@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schema xmlns="http://purl.oclc.org/dsdl/schematron" queryBinding="xslt2"
-    xmlns:sqf="http://www.schematron-quickfix.com/validator/process">
+    xmlns:sqf="http://www.schematron-quickfix.com/validator/process"
+    xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
     
     <ns uri="http://docbook.org/ns/docbook" prefix="d"/>
     
@@ -9,6 +10,12 @@
     <pattern id="leading-whitespace" abstract="true">
         <rule context="$element">
             <report test="matches(., '^[\p{Zs}\s]')" role="warning"><name/> should not begin with whitespace</report>
+        </rule>
+    </pattern>
+    
+    <pattern id="trailing-punctuation" abstract="true">
+        <rule context="$element">
+            <report test="matches(normalize-space(.), '[\.,:;]$')" role="warning"><name/> should not end with punctuation</report>
         </rule>
     </pattern>
     
@@ -52,7 +59,15 @@
             <assert test=". = $allowed-langs">Value of language attribute should be one of: <value-of select="string-join($allowed-langs, ', ')"/>; got '<value-of select="."/>'</assert>            
         </rule>
         <rule context="d:programlisting/d:co">
-            <assert test="preceding-sibling::node()[self::text() or self::*][matches(., '\s$')]" role="warning"><name/> should be preceded by whitespace</assert>
+            <sqf:fix id="callout-spacing">
+                <sqf:description>
+                    <sqf:title>Inserts space before callouts in programlistings</sqf:title>
+                </sqf:description>
+                <!-- @xml:space is required here to force the whitespace-only text node to be added by the QuickFix;
+                wrapping it in <xsl:text> also works, but in oXygen 21.0 at least, it monkeys with the indentation -->
+                <sqf:add match="." position="before" xml:space="preserve"> </sqf:add>
+            </sqf:fix>
+            <assert test="preceding-sibling::node()[self::text() or self::*][matches(., '\s$')]" role="warning" sqf:fix="callout-spacing"><name/> should be preceded by whitespace</assert>
         </rule>
     </pattern>
     
@@ -82,6 +97,10 @@
             </sqf:fix>
             <report test="@linkend = $bib-ids" sqf:fix="rename-xref">Cross-references to bibliography entries must use biblioref rather than <name/></report>
         </rule>
+    </pattern>
+    
+    <pattern id="bib-titles" is-a="trailing-punctuation">
+        <param name="element" value="d:bibliomixed/d:title | d:biblioentry/d:title"/>
     </pattern>
     
 </schema>
