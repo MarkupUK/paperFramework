@@ -56,7 +56,7 @@
                 tcl
                 upc
                 xml', '\s')"/>
-            <assert test=". = $allowed-langs">Value of language attribute should be one of: <value-of select="string-join($allowed-langs, ', ')"/>; got '<value-of select="."/>'</assert>            
+            <assert test=". = $allowed-langs" role="warning">Value of language attribute should be one of: <value-of select="string-join($allowed-langs, ', ')"/>; got '<value-of select="."/>'</assert>            
         </rule>
         <rule context="d:programlisting/d:co">
             <sqf:fix id="callout-spacing">
@@ -81,7 +81,7 @@
                     <sqf:copy-of select="node()"/>
                 </sqf:replace>
             </sqf:fix>
-            <report test="count(*) = 1 and node()[1][self::d:emphasis]" sqf:fix="remove-emphasis"><name/> must not be entirely wrapped in emphasis</report>
+            <report test="count(*) = 1 and node()[1][self::d:emphasis] and node()[last()][self::d:emphasis]" sqf:fix="remove-emphasis"><name/> must not be entirely wrapped in emphasis</report>
         </rule>
     </pattern>
     
@@ -103,8 +103,8 @@
         <param name="element" value="d:bibliomixed/d:title | d:biblioentry/d:title"/>
     </pattern>
     
-    <pattern id="missing-abstract">
-        <rule context="d:article">
+    <pattern id="article-metadata">
+        <rule context="d:article/d:info">
             <assert test="d:abstract" role="warning">Element abstract should be present</assert>
         </rule>
     </pattern>
@@ -112,6 +112,12 @@
     <pattern id="empty-listitem">
         <rule context="d:listitem/d:para">
             <assert test="normalize-space()"><name path=".."/>/<name/> must not be empty</assert>
+        </rule>
+    </pattern>
+    
+    <pattern id="auto-generated-titles">
+        <rule context="d:appendix">
+            <report test="matches(d:title, '^Appendix [A-Z]?')"><name/> titles must not begin with 'Appendix [label]': <value-of select="d:title"/></report>
         </rule>
     </pattern>
     
