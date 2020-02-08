@@ -10,4 +10,10 @@
         </rule>
     </pattern>
     
+    <pattern id="title">
+        <rule context="d:title">
+            <report test="count(*) = 1 and d:emphasis"><name/> must not be entirely wrapped in emphasis</report>
+        </rule>
+    </pattern>
+    
 </schema>
