@@ -130,4 +130,10 @@
         </rule>
     </pattern>
     
+    <pattern id="caption-vs-figure-title">
+        <rule context="d:mediaobject[d:textobject and d:caption]">
+            <report test="d:caption[starts-with(normalize-space(.), normalize-space(../d:textobject))]">Please use figure instead here and move the content of <name/>/caption into its title</report>
+        </rule>
+    </pattern>
+    
 </schema>
