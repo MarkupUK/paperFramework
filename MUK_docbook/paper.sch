@@ -6,10 +6,25 @@
     
     <let name="bib-ids" value="//d:bibliography//@xml:id"/>
     
+    <pattern id="leading-whitespace" abstract="true">
+        <rule context="$element">
+            <report test="matches(., '^[\p{Zs}\s]')" role="warning"><name/> should not begin with whitespace</report>
+        </rule>
+    </pattern>
+    
+    <pattern is-a="leading-whitespace">
+        <param name="element" value="d:programlisting | d:title"/>
+    </pattern>
+    
     <pattern id="programlisting">
         <rule context="d:programlisting">
-            <report test="matches(., '^[\p{Zs}\s]')" role="warning">Unless intended, <name/> should not begin with whitespace</report>
-            <assert test="@language" role="warning"><name/> should have a language attribute where possible, to enable syntax highlighting</assert>
+            <sqf:fix id="programlisting-xml">
+                <sqf:description>
+                    <sqf:title>Sets the language to 'xml'</sqf:title>
+                </sqf:description>
+                <sqf:add match="." node-type="attribute" target="language">xml</sqf:add>
+            </sqf:fix>
+            <assert test="@language" role="warning" sqf:fix="programlisting-xml"><name/> should have a language attribute where possible, to enable syntax highlighting</assert>
         </rule>
         <rule context="d:programlisting/@language">
             <let name="allowed-langs" value="tokenize('bourne
@@ -48,7 +63,7 @@
                     <sqf:copy-of select="node()"/>
                 </sqf:replace>
             </sqf:fix>
-            <report test="count(*) = 1 and d:emphasis" sqf:fix="remove-emphasis"><name/> must not be entirely wrapped in emphasis</report>
+            <report test="count(*) = 1 and node()[1][self::d:emphasis]" sqf:fix="remove-emphasis"><name/> must not be entirely wrapped in emphasis</report>
         </rule>
     </pattern>
     
