@@ -2,7 +2,7 @@
 <schema xmlns="http://purl.oclc.org/dsdl/schematron" queryBinding="xslt2"
     xmlns:sqf="http://www.schematron-quickfix.com/validator/process"
     xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
-    
+
     <ns uri="http://docbook.org/ns/docbook" prefix="d"/>
     
     <let name="bib-ids" value="//d:bibliography//@xml:id"/>
@@ -101,6 +101,12 @@
     
     <pattern id="bib-titles" is-a="trailing-punctuation">
         <param name="element" value="d:bibliomixed/d:title | d:biblioentry/d:title"/>
+    </pattern>
+    
+    <pattern id="missing-abstract">
+        <rule context="d:article">
+            <assert test="d:abstract" role="warning">Element abstract should be present</assert>
+        </rule>
     </pattern>
     
 </schema>
