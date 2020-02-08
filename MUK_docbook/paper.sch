@@ -4,6 +4,8 @@
     
     <ns uri="http://docbook.org/ns/docbook" prefix="d"/>
     
+    <let name="bib-ids" value="//d:bibliography//@xml:id"/>
+    
     <pattern id="programlisting">
         <rule context="d:programlisting">
             <report test="matches(., '^[\p{Zs}\s]')" role="warning">Unless intended, <name/> should not begin with whitespace</report>
@@ -38,7 +40,29 @@
     
     <pattern id="title">
         <rule context="d:title">
-            <report test="count(*) = 1 and d:emphasis"><name/> must not be entirely wrapped in emphasis</report>
+            <sqf:fix id="remove-emphasis">
+                <sqf:description>
+                    <sqf:title>Strips emphasis from titles</sqf:title>
+                </sqf:description>
+                <sqf:replace match="d:emphasis">
+                    <sqf:copy-of select="node()"/>
+                </sqf:replace>
+            </sqf:fix>
+            <report test="count(*) = 1 and d:emphasis" sqf:fix="remove-emphasis"><name/> must not be entirely wrapped in emphasis</report>
+        </rule>
+    </pattern>
+    
+    <pattern id="bibliography">
+        <rule context="d:xref">
+            <sqf:fix id="rename-xref">
+                <sqf:description>
+                    <sqf:title>Replaces element xref with biblioref</sqf:title>
+                </sqf:description>
+                <sqf:replace match="." node-type="element" target="biblioref">
+                    <sqf:copy-of select="@*"/>
+                </sqf:replace>
+            </sqf:fix>
+            <report test="@linkend = $bib-ids" sqf:fix="rename-xref">Cross-references to bibliography entries must use biblioref rather than <name/></report>
         </rule>
     </pattern>
     
