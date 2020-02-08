@@ -3,10 +3,16 @@
     xmlns:sqf="http://www.schematron-quickfix.com/validator/process"
     xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
+    <!-- NAMESPACE DECLARATIONS -->
+
     <ns uri="http://docbook.org/ns/docbook" prefix="d"/>
     <ns uri="http://www.w3.org/1999/xlink" prefix="xlink"/>
     
+    <!-- GLOBAL VARIABLES -->
+    
     <let name="bib-ids" value="//d:bibliography//@xml:id"/>
+    
+    <!-- ABSTRACT PATTERNS -->
     
     <pattern id="leading-whitespace" abstract="true">
         <rule context="$element">
@@ -25,6 +31,8 @@
             <report test="matches(normalize-space(.), '[\.,:;]$')" role="warning"><name/> should not end with punctuation</report>
         </rule>
     </pattern>
+    
+    <!-- CONCRETE PATTERNS -->
     
     <pattern is-a="leading-whitespace">
         <param name="element" value="d:programlisting | d:title"/>
@@ -143,6 +151,12 @@
     <pattern id="caption-vs-figure-title">
         <rule context="d:mediaobject[d:textobject and d:caption]">
             <report test="d:caption[starts-with(normalize-space(.), normalize-space(../d:textobject))]">Please use figure instead here and move the content of <name/>/caption into its title</report>
+        </rule>
+    </pattern>
+    
+    <pattern id="root-element">
+        <rule context="/">
+            <assert test="d:article">The root element must be article</assert>
         </rule>
     </pattern>
     
