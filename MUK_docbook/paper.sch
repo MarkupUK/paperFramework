@@ -124,6 +124,10 @@
         <rule context="d:citation">
             <assert test=". = $bib-items/d:abbrev">Content of <name/> must match that of an abbrev element in the bibliography: '<value-of select="."/>' not found</assert>
         </rule>
+        <rule context="d:bibliography">
+            <let name="xreflabels" value="$bib-items/(@xreflabel|d:abbrev)"/>
+            <assert test="count(distinct-values($xreflabels)) = count($xreflabels)">Bibliography contains multiple instances of the same xreflabel attribute or abbrev element; please make sure that they are distinct, as this will result in the same label appearing for different items</assert>
+        </rule>
     </pattern>
     
     <pattern id="bib-titles" is-a="trailing-punctuation">
