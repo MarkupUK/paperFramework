@@ -11,6 +11,7 @@
     <!-- GLOBAL VARIABLES -->
     
     <let name="bib-ids" value="//d:bibliography//@xml:id"/>
+    <let name="bib-items" value="//d:bibliography//(d:bibliomixed|d:biblioentry)"/>
     
     <!-- KEYS -->
     
@@ -43,7 +44,7 @@
     </pattern>
     
     <pattern is-a="trailing-whitespace">
-        <param name="element" value="d:programlisting | d:biblioid"/>
+        <param name="element" value="d:programlisting | d:biblioid | d:title"/>
     </pattern>
     
     <pattern id="programlisting">
@@ -119,6 +120,9 @@
                 </sqf:replace>
             </sqf:fix>
             <report test="@linkend = $bib-ids" sqf:fix="rename-xref">Cross-references to bibliography entries must use biblioref rather than <name/></report>
+        </rule>
+        <rule context="d:citation">
+            <assert test=". = $bib-items/d:abbrev">Content of <name/> must match that of an abbrev element in the bibliography: '<value-of select="."/>' not found</assert>
         </rule>
     </pattern>
     
