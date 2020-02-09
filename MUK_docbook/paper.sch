@@ -43,7 +43,7 @@
     </pattern>
     
     <pattern is-a="trailing-whitespace">
-        <param name="element" value="d:biblioid"/>
+        <param name="element" value="d:programlisting | d:biblioid"/>
     </pattern>
     
     <pattern id="programlisting">
@@ -132,9 +132,12 @@
         </rule>
     </pattern>
     
-    <pattern id="empty-listitem">
-        <rule context="d:listitem/d:para[not(*)]">
+    <pattern id="listitems">
+        <rule context="d:listitem/d:para[not(*)]" id="empty-listitem">
             <assert test="normalize-space()"><name path=".."/>/<name/> must not be empty</assert>
+        </rule>
+        <rule context="d:listitem">
+            <report test="@remap">Please use attribute override instead of remap='<value-of select="@remap"/>'</report>
         </rule>
     </pattern>
     
