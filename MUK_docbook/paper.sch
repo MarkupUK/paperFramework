@@ -12,6 +12,10 @@
     
     <let name="bib-ids" value="//d:bibliography//@xml:id"/>
     
+    <!-- KEYS -->
+    
+    <xsl:key name='xref-target' match='*' use='@xml:id'/> 
+    
     <!-- ABSTRACT PATTERNS -->
     
     <pattern id="leading-whitespace" abstract="true">
@@ -129,7 +133,7 @@
     </pattern>
     
     <pattern id="empty-listitem">
-        <rule context="d:listitem/d:para">
+        <rule context="d:listitem/d:para[not(*)]">
             <assert test="normalize-space()"><name path=".."/>/<name/> must not be empty</assert>
         </rule>
     </pattern>
@@ -157,6 +161,13 @@
     <pattern id="root-element">
         <rule context="/">
             <assert test="d:article">The root element must be article</assert>
+        </rule>
+    </pattern>
+    
+    <pattern id="xref">
+        <rule context="d:xref">
+            <let name="target" value="key('xref-target', @linkend)"/>
+            <assert test="$target/(d:info/d:title|d:title)">Cross-references must be to an element with a title - please either add a title or use element link with text content instead; see element with xml:id='<value-of select="@linkend"/>'</assert>
         </rule>
     </pattern>
     
