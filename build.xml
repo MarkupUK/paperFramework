@@ -29,6 +29,23 @@ BEFORE making a release on GitHub:
    'Releasing MUK_docbook x.y.z.' commit message
  - Push the commits to GitHub.
 
+RELEASING on GitHub
+ - From https://github.com/MarkupUK/paperFramework, click on
+   'Releases' in the right sidebar to go to
+   https://github.com/MarkupUK/paperFramework/releases/
+ - Click on 'Draft a new release' to go to
+   https://github.com/MarkupUK/paperFramework/releases/new
+ - In the 'Tag version' field, enter 'v' followed by the ${version}
+   value; for example, 'v1.0.0'
+ - In the 'Release title' field, enter 'MUK_docbook' followed by
+   the ${version} value; for example, 'MUK_docbook 1.0.0'
+ - In the 'Describe this release' field, describe this release
+ - Attach the Zip file for the current release that was generated in
+   the local 'releases' folder to the issue by either dragging it to
+   the 'Attach binaries by dropping them here or selecting them.' field
+   or clicking on the field and then selecting the Zip file
+ - Click on 'Publish release'.
+
 AFTER making a release on GitHub:
  - Increment ${version} in 'properties.xml' so it's not possible
    to accidentally overwrite a release's Zip file with different
