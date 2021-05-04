@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="MUK_docbook" basedir="." default="release"
+	 xmlns:if="ant:if"
+	 xmlns:unless="ant:unless">
+<description>Targets used when developing
+'MUK_docbook' and making a release.</description>
+<!--
+     Copyright 2021 Markup UK Ltd.
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+         http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+
+<!--
+BEFORE making a release on GitHub:
+ - Commit all hand-modified files
+ - Make sure that ${version} in 'properties.xml' is correct
+ - Run the 'release' target with '-Dforce=yes'
+ - Commit build.properties and the generated files with a
+   'Releasing MUK_docbook x.y.z.' commit message
+ - Push the commits to GitHub.
+
+RELEASING on GitHub
+ - From https://github.com/MarkupUK/paperFramework, click on
+   'Releases' in the right sidebar to go to
+   https://github.com/MarkupUK/paperFramework/releases/
+ - Click on 'Draft a new release' to go to
+   https://github.com/MarkupUK/paperFramework/releases/new
+ - In the 'Tag version' field, enter 'v' followed by the ${version}
+   value; for example, 'v1.0.0'
+ - In the 'Release title' field, enter 'MUK_docbook' followed by
+   the ${version} value; for example, 'MUK_docbook 1.0.0'
+ - In the 'Describe this release' field, describe this release
+ - Attach the Zip file for the current release that was generated in
+   the local 'releases' folder to the issue by either dragging it to
+   the 'Attach binaries by dropping them here or selecting them.' field
+   or clicking on the field and then selecting the Zip file
+ - Click on 'Publish release'.
+
+AFTER making a release on GitHub:
+ - Increment ${version} in 'properties.xml' so it's not possible
+   to accidentally overwrite a release's Zip file with different
+   versions of files.
+-->
+
+<dirname property="MUK_docbook.basedir" file="${ant.file.MUK_docbook}"/>
+
+<pathconvert property="MUK_docbook.basedir.converted" dirsep="/">
+  <path location="${MUK_docbook.basedir}" />
+  <!-- Ant under cygwin uses a lowercase drive letter, which Java
+       programs don't always recognise as a drive letter, so
+       translate. -->
+  <map from="c:" to="C:"/>
+  <map from="d:" to="D:"/>
+  <map from="e:" to="E:"/>
+</pathconvert>
+
+<pathconvert property="basedir.converted" dirsep="/">
+  <path location="${basedir}" />
+  <!-- Ant under cygwin uses a lowercase drive letter, which Java
+       programs don't always recognise as a drive letter, so
+       translate. -->
+  <map from="c:" to="C:"/>
+  <map from="d:" to="D:"/>
+  <map from="e:" to="E:"/>
+</pathconvert>
+
+<pathconvert property="ant.home.converted" dirsep="/">
+  <path location="${ant.home}" />
+  <!-- Ant under cygwin uses a lowercase drive letter, which Java
+       programs don't always recognise as a drive letter, so
+       translate. -->
+  <map from="c:" to="C:"/>
+  <map from="d:" to="D:"/>
+  <map from="e:" to="E:"/>
+</pathconvert>
+
+<!-- Current project folder as file path. -->
+<property name="pd" value="."/>
+<!-- Current file folder as file path. -->
+<property name="pwd" value="${user.dir}"/>
+
+
+<!-- XML file of really local overrides of properties determining or
+     describing local configuration. -->
+<property
+    name="properties.local.xml"
+    location="${pwd}/properties.local.xml"/>
+<property
+    file="${properties.local.xml}"/>
+
+<!-- XML file of properties determining or describing local
+     configuration. -->
+<property
+    name="properties.xml"
+    location="${pwd}/properties.xml"/>
+<property
+    file="${properties.xml}"/>
+
+<tstamp>
+  <format property="timestamp" pattern="yyyy-MM-dd"/>
+</tstamp>
+
+<!-- Release targets. -->
+
+<target name="updateSite.xml.uptodate">
+  <condition property="updateSite.xml.uptodate">
+    <and>
+      <uptodate srcfile="${basedir.converted}/properties.xml"
+		targetfile="${basedir.converted}/updateSite.xml" />
+      <isfalse value="${force}" />
+    </and>
+  </condition>
+</target>
+
+<target name="updateSite.xml" depends="updateSite.xml.uptodate"
+	unless="updateSite.xml.uptodate"
+	description="Update the version information in 'updateSite.xml'.">
+  <replaceregexp file="${MUK_docbook.basedir.converted}/updateSite.xml"
+		 encoding="UTF-8">
+    <regexp pattern="&lt;xt:version>[^&lt;]+&lt;/xt:version>" />
+    <substitution expression="&lt;xt:version>${version}&lt;/xt:version>"/>
+  </replaceregexp>
+  <replaceregexp file="${MUK_docbook.basedir.converted}/updateSite.xml"
+		 encoding="UTF-8">
+    <regexp pattern='releases/download/[^"]+' />
+    <substitution
+	expression="releases/download/v${version}/${ant.project.name}-framework-${version}.zip"/>
+  </replaceregexp>
+</target>
+
+<target name="framework.zip" depends="updateSite.xml"
+	description="Make a Zip archive of just the oXygen framework.">
+  <mkdir dir="${MUK_docbook.basedir.converted}/releases" />
+  <zip destfile="${MUK_docbook.basedir.converted}/releases/${ant.project.name}-framework-${version}.zip"
+       basedir="${MUK_docbook.basedir.converted}"
+       excludes="**"
+       update="true">
+    <zipfileset dir="."
+		includes="LICENSE"
+		prefix="${ant.project.name}" />
+    <zipfileset dir="MUK_docbook"
+		includes="markup_uk_paper.framework, paper.sch"
+		prefix="${ant.project.name}" />
+    <zipfileset dir="MUK_docbook/templates" includes="*.xml"
+		prefix="${ant.project.name}/templates" />
+  </zip>
+</target>
+
+<target name="release" depends="updateSite.xml, framework.zip" />
+
+<!-- Utility targets. -->
+
+<target name="echoproperties">
+  <echoproperties />
+</target>
+
+</project>
