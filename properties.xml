@@ -1,0 +1,8 @@
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties version="1.0">
+<comment>Project properties for 'MUK_docbook' project.</comment>
+
+<!-- Version of current code base.  Included in generated files.
+     See instructions in 'build.xml'. -->
+<entry key="version">0.0.1</entry>
+</properties>

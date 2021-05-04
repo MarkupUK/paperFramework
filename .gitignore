@@ -1,0 +1,4 @@
+releases
+*.local.xml
+*.local.properties
+*~

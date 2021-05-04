@@ -138,6 +138,18 @@ AFTER making a release on GitHub:
   </replaceregexp>
 </target>
 
+<target name="project.zxpr"
+	description="Make a Zip archive of the project file.">
+  <mkdir dir="${MUK_docbook.basedir.converted}/${ant.project.name}/templates" />
+  <zip destfile="${MUK_docbook.basedir.converted}/${ant.project.name}/templates/${ant.project.name}.zxpr"
+       basedir="${MUK_docbook.basedir.converted}/project"
+       excludes="**"
+       update="true">
+    <zipfileset dir="project"
+		includes="${ant.project.name}.xpr" />
+  </zip>
+</target>
+
 <target name="framework.zip" depends="updateSite.xml"
 	description="Make a Zip archive of just the oXygen framework.">
   <mkdir dir="${MUK_docbook.basedir.converted}/releases" />
@@ -151,12 +163,17 @@ AFTER making a release on GitHub:
     <zipfileset dir="MUK_docbook"
 		includes="markup_uk_paper.framework, paper.sch"
 		prefix="${ant.project.name}" />
-    <zipfileset dir="MUK_docbook/templates" includes="*.xml"
+    <zipfileset dir="MUK_docbook/icons"
+		includes="*.*"
+		prefix="${ant.project.name}/icons" />
+    <zipfileset dir="MUK_docbook/templates"
+		includes="*.*" excludes="*~"
 		prefix="${ant.project.name}/templates" />
   </zip>
 </target>
 
-<target name="release" depends="updateSite.xml, framework.zip" />
+<target name="release"
+	depends="updateSite.xml, project.zxpr, framework.zip" />
 
 <!-- Utility targets. -->
 
