@@ -1,0 +1,6 @@
+[submodule "MUK-xsl"]
+	path = MUK-xsl
+	url = https://github.com/MarkupUK/MUK-xsl.git
+[submodule "MUK_docbook/xsl"]
+	path = MUK_docbook/xsl
+	url = https://github.com/MarkupUK/MUK-xsl.git
