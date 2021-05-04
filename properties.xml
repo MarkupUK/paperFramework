@@ -4,5 +4,5 @@
 
 <!-- Version of current code base.  Included in generated files.
      See instructions in 'build.xml'. -->
-<entry key="version">0.0.1</entry>
+<entry key="version">0.0.3</entry>
 </properties>
