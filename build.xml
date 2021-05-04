@@ -24,12 +24,10 @@
 BEFORE making a release on GitHub:
  - Commit all hand-modified files
  - Make sure that ${version} in 'properties.xml' is correct
- - Run the 'framework.zip' target with '-Dforce=yes'
+ - Run the 'release' target with '-Dforce=yes'
  - Commit build.properties and the generated files with a
-   'Releasing MUK_doccob x.y.z.' commit message
+   'Releasing MUK_docbook x.y.z.' commit message
  - Push the commits to GitHub.
- - Update 'ChangeLog.md' on GitHub.
- - Pull 'ChangeLog.md' from GitHub.
 
 AFTER making a release on GitHub:
  - Increment ${version} in 'properties.xml' so it's not possible
