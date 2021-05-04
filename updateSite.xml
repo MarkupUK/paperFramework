@@ -3,14 +3,14 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://www.oxygenxml.com/ns/extension http://www.oxygenxml.com/ns/extension/extensions.xsd">
     <xt:extension id="MUK_docbook">
-        <xt:location href="MUK_docbook.zip"/>
-        <xt:version>1.0.0</xt:version>
+        <xt:location href="https://github.com/MarkupUK/paperFramework/releases/download/v0.0.0/MUK_docbook-framework-0.0.0.zip"/>
+        <xt:version>0.0.0</xt:version>
         <xt:oxy_version>16.0+</xt:oxy_version>
         <xt:type>framework</xt:type>
         <xt:author>Tomos Hillman, Markup UK Ltd</xt:author>
         <xt:name>Markup UK Paper Framework</xt:name>
         <xt:description xmlns="http://www.w3.org/1999/xhtml">
-          This framework is for use by prospective speakers and paper writers for the Markup UK converence..
+          This framework is for use by prospective speakers and paper writers for the Markup UK conference..
         </xt:description>
         <xt:license>
 <![CDATA[
