@@ -146,7 +146,7 @@ AFTER making a release on GitHub:
        excludes="**"
        update="true">
     <zipfileset dir="project"
-		includes="${ant.project.name}.xpr" />
+		includes="${ant.project.name}.xpr, *.xml" />
   </zip>
 </target>
 
