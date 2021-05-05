@@ -169,11 +169,16 @@ AFTER making a release on GitHub:
     <zipfileset dir="MUK_docbook/templates"
 		includes="*.*" excludes="*~"
 		prefix="${ant.project.name}/templates" />
+    <zipfileset dir="MUK_docbook/xsl"
+		prefix="${ant.project.name}/xsl" />
   </zip>
 </target>
 
 <target name="release"
-	depends="updateSite.xml, project.zxpr, framework.zip" />
+	depends="updateSite.xml, project.zxpr, framework.zip">
+  <copy file="${MUK_docbook.basedir.converted}/resources/formatter-options/formatter-options.xml"
+	todir="${MUK_docbook.basedir.converted}/releases" />
+</target>
 
 <!-- Utility targets. -->
 
