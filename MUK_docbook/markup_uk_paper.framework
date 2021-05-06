@@ -31,6 +31,23 @@
 									</poPatch>
 									<poPatch>
 										<field name="fieldPath">
+											<String>classpath</String>
+										</field>
+										<field name="index">
+											<Integer>4</Integer>
+										</field>
+										<field name="value">
+											<String>${frameworks}/dita/DITA-OT3.x/plugins/com.oxygenxml.highlight/lib/xslthl-2.1.1.jar</String>
+										</field>
+										<field name="patchHandling">
+											<String>addIndex</String>
+										</field>
+										<field name="anchor">
+											<null/>
+										</field>
+									</poPatch>
+									<poPatch>
+										<field name="fieldPath">
 											<String>templatesLocations</String>
 										</field>
 										<field name="index">
@@ -286,7 +303,7 @@ Docbook is a markup language for technical documentation, originally intended fo
 												<field name="extensionURLs">
 													<String-array>
 														<String>${frameworks}/docbook/xsl/extensions/xslthl*.jar</String>
-														<String>${frameworks}/docbook/xsl/extensions/saxon65*.jar</String>
+														<String>${frameworks}/dita/DITA-OT3.x/plugins/com.oxygenxml.highlight/lib/xslthl-2.1.1.jar</String>
 													</String-array>
 												</field>
 											</scenario>
@@ -486,6 +503,7 @@ Docbook is a markup language for technical documentation, originally intended fo
 													<String-array>
 														<String>${frameworks}/docbook/xsl/extensions/xslthl*.jar</String>
 														<String>${frameworks}/docbook/xsl/extensions/saxon65*.jar</String>
+														<String>${framework}/xsl/docbook-1.79.1/extensions/xslthl*.jar</String>
 													</String-array>
 												</field>
 											</scenario>
