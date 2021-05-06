@@ -153,14 +153,20 @@ AFTER making a release on GitHub:
 <target name="framework.zip" depends="updateSite.xml"
 	description="Make a Zip archive of just the oXygen framework.">
   <mkdir dir="${MUK_docbook.basedir.converted}/releases" />
+  <!-- Delete Zip file of current version if it exists. -->
+  <delete file="${MUK_docbook.basedir.converted}/releases/${ant.project.name}-framework-${version}.zip"
+	  quiet="true"
+	  failonerror="false" />
   <zip destfile="${MUK_docbook.basedir.converted}/releases/${ant.project.name}-framework-${version}.zip"
+       includes="MUK_docbook/**"
+       excludes="**/.git*, **/jython.jar"
        basedir="${MUK_docbook.basedir.converted}"
-       excludes="**"
-       update="true">
+       level="9"
+       update="false">
     <zipfileset dir="."
 		includes="LICENSE"
 		prefix="${ant.project.name}" />
-    <zipfileset dir="MUK_docbook"
+    <!--<zipfileset dir="MUK_docbook" />
 		includes="markup_uk_paper.framework, paper.sch"
 		prefix="${ant.project.name}" />
     <zipfileset dir="MUK_docbook/icons"
@@ -169,8 +175,8 @@ AFTER making a release on GitHub:
     <zipfileset dir="MUK_docbook/templates"
 		includes="*.*" excludes="*~"
 		prefix="${ant.project.name}/templates" />
-    <zipfileset dir="MUK_docbook/xsl"
-		prefix="${ant.project.name}/xsl" />
+    <fileset dir="MUK_docbook/xsl"
+		includes="**/*" />-->
   </zip>
 </target>
 
