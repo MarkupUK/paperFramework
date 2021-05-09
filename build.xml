@@ -159,7 +159,7 @@ AFTER making a release on GitHub:
 	  failonerror="false" />
   <zip destfile="${MUK_docbook.basedir.converted}/releases/${ant.project.name}-framework-${version}.zip"
        includes="MUK_docbook/**"
-       excludes="**/.git*, **/jython.jar"
+       excludes="**/.git*, **/jython.jar, **/out"
        basedir="${MUK_docbook.basedir.converted}"
        level="9"
        update="false">
