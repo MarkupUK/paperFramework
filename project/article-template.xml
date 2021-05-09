@@ -55,19 +55,19 @@ in preparing the next XML Prague conference.</para></personblurb>
 
 <para>You can use not only paragraphs, but also programlistings:</para>
 
-<programlisting><![CDATA[<article xmlns="http://docbook.org/ns/docbook" …>
+<programlisting language="xml"><![CDATA[<article xmlns="http://docbook.org/ns/docbook" …>
   <title>Sample article</title>
   <para>This is a really short article.</para>
 </article>]]></programlisting>
 
-<para>DocBook offers plenty of elements for inline markup, for example
-<tag>code</tag> for arbitrary code, e.g. <code>print 2+3;</code>.</para>
+<para>DocBook offers plenty of elements for inline markup, for example <tag>code</tag> for arbitrary
+      code, e.g. <code language="C">print 2+3;</code>.</para>
 
 <para>You can give titles to your programlistings using <tag>example</tag>:</para>
 
 <example>
 <title>DocBook V4.5 document</title>
-<programlisting><![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<programlisting language="xml"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE article PUBLIC '-//OASIS//DTD DocBook XML V4.5//EN'
                          'http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd'>
 <article lang="en">
@@ -228,14 +228,14 @@ directory. Adding the following line into the configuration file,
 will associate DocBook V5.0 elements with the appropriate
 schema:</para>
 
-<programlisting>&lt;namespace ns="http://docbook.org/ns/docbook" uri="<replaceable>/path/to/</replaceable>docbook.rnc"/></programlisting>
+<programlisting language="xml">&lt;namespace ns="http://docbook.org/ns/docbook" uri="<replaceable>/path/to/</replaceable>docbook.rnc"/></programlisting>
 
 <para>If you can't edit the global <filename>schemas.xml</filename> file,
 you can create this file in the same directory as your document. nXML will
 find associations placed there also. In this case you must create a
 complete configuration file like:</para>
 
-<programlisting>&lt;locatingRules xmlns="http://thaiopensource.com/ns/locating-rules/1.0">
+<programlisting language="xml">&lt;locatingRules xmlns="http://thaiopensource.com/ns/locating-rules/1.0">
   &lt;namespace ns="http://docbook.org/ns/docbook" uri="<replaceable>/path/to/</replaceable>docbook.rnc"/>
 &lt;/locatingRules></programlisting>
 
@@ -302,9 +302,8 @@ class="attribute">xml:id</tag> using <tag>xref</tag> element, like
 <section>
 <title>Conclusion</title>
 
-<para>You should finish your article with references. You can easily
-cite references from you article using <tag>citation</tag> element,
-like <citation>RNCTUT</citation>.</para>
+<para>You should finish your article with references. You can easily cite references from your
+      article using <tag>citation</tag> element, like <citation>RNCTUT</citation>.</para>
 
 </section>
 
