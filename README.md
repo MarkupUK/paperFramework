@@ -2,10 +2,6 @@
 
 **MUK_docbook** is an add-on Oxygen framework for use by prospective speakers and paper writers for the Markup UK conference. It provides the **Markup UK Paper [Extension of DocBook 5]** Document Type Association for editing, validating, and formatting Markup UK Papers.
 
-## Issues
-
-- Syntax highlighting in `<programlisting>` does not work when you format from Oxygen with **MUK_docbook 0.0.7** and later
-
 ## Installation
 
 Follow the instructions in the oXygen manual at https://www.oxygenxml.com/doc/ug-editor/topics/installing-and-updating-add-ons.html
