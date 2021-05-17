@@ -40,15 +40,15 @@
     <!-- CONCRETE PATTERNS -->
     
     <pattern is-a="leading-whitespace">
-        <param name="element" value="d:programlisting | d:title"/>
+        <param name="element" value="d:programlisting | d:screen | d:synopsis | d:title"/>
     </pattern>
     
     <pattern is-a="trailing-whitespace">
-        <param name="element" value="d:programlisting | d:biblioid | d:title"/>
+        <param name="element" value="d:programlisting | d:screen | d:synopsis | d:biblioid | d:title"/>
     </pattern>
     
     <pattern id="programlisting">
-        <rule context="d:programlisting">
+        <rule context="d:programlisting | d:screen | d:synopsis">
             <sqf:fix id="programlisting-xml">
                 <sqf:description>
                     <sqf:title>Sets the language to 'xml'</sqf:title>
@@ -57,7 +57,7 @@
             </sqf:fix>
             <assert test="@language" role="warning" sqf:fix="programlisting-xml"><name/> should have a language attribute where possible, to enable syntax highlighting</assert>
         </rule>
-        <rule context="d:programlisting/@language">
+        <rule context="d:programlisting/@language | d:screen/@language | d:synopsis/@language">
             <let name="allowed-langs" value="tokenize('bourne
                 c
                 cmake
@@ -65,6 +65,7 @@
                 csharp
                 css
                 delphi
+                diff3
                 ini
                 java
                 javascript
@@ -82,7 +83,7 @@
                 xml', '\s+')"/>
             <assert test=". = $allowed-langs" role="warning">Value of language attribute should be one of: <value-of select="string-join($allowed-langs, ', ')"/>; got '<value-of select="."/>'</assert>            
         </rule>
-        <rule context="d:programlisting/d:co">
+        <rule context="d:programlisting/d:co | d:screen/d:co | d:synopsis/d:co">
             <sqf:fix id="callout-spacing">
                 <sqf:description>
                     <sqf:title>Inserts space before callouts in programlistings</sqf:title>
