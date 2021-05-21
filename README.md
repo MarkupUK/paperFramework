@@ -14,11 +14,16 @@ Note that oXygen will warn you that the add-on is not signed. This is expected. 
 
 **MUK_docbook** applies some extra Schematron rules when you validate your document.
 
-## 'Markup UK Paper' Transformation Scenario
+## 'Markup UK Paper' Transformation Scenarios
 
-The 'Markup UK Paper' transformation scenario makes it easy to preview how your paper will look in the Markup UK proceedings. The transformation scenario formats your paper using the same DocBook XSLT Stylesheets customisation as is used in the final proceedings.
+The 'Markup UK Paper' transformation scenario makes it easy to preview how your paper will look in the Markup UK proceedings. The transformation scenario formats your paper to PDF using the same DocBook XSLT Stylesheets customisation as is used in the final proceedings.
 
 The Markup UK proceedings are formatted using Antenna House Formatter. Accurate reproduction of the final proceedings requires that you also have a recent version of the Antenna House XSL Formatter installed and that Oxygen is configured to use it.
+
+Other 'Markup UK Paper' transformation scenarios are:
+
+- 'Markup UK Paper - GUI (Windows)' - On Windows only, opens the XSLT output (with `.xml_xslt` extension) in the AH Formatter GUI. If AH Formatter GUI is already running, the file will open in that GUI. If the transformation scenario has to start the GUI, the scenario will not terminate until the GUI is closed. If the file is already open in the GUI, the file will reopen at the current page.
+- 'Markup UK Paper - FO' - Generates an XSL-FO file with `.fo` extension. The file can be opened in the AH Formatter GUI or formatted with `AHFCmd` or opened in an editor, etc.
 
 ### 'Antenna House' external FO processor
 
