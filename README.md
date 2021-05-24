@@ -1,6 +1,8 @@
 # 'MUK_docbook' add-on Oxygen framework
 
-**MUK_docbook** is an add-on Oxygen framework for use by prospective speakers and paper writers for the Markup UK conference. It provides the **Markup UK Paper [Extension of DocBook 5]** Document Type Association for editing, validating, and formatting Markup UK Papers.
+**MUK_docbook** is an add-on Oxygen framework for use by prospective speakers and paper writers for the Markup UK conference. It provides the **Markup UK Paper [Extension of DocBook 5]** Document Type Association for editing, validating, and formatting Markup UK Papers. The provided transformation scenarios use the same DocBook XSLT Stylesheets customisation and XSL-FO formatter as are used in the final proceedings.
+
+![](framework.jpg)
 
 ## Installation
 
