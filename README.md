@@ -51,6 +51,10 @@ The **MUK_docbook** framework is an extension of Oxygen's 'DocBook 5 framework. 
 
 However, because the add-on has a higher priority than Oxygen's built-in 'DocBook 5' framework, **MUK_docbook** is used in preference to 'DocBook 5' for all DocBook 5 documents, not just for Markup UK papers. Disable the **Markup UK Paper [Extension of DocBook 5]** Document Type Association in your Oxygen preferences when you want to use the built-in 'DocBook 5' framework instead.
 
+## Developing the 'MUK_docbook' add-on Oxygen framework
+
+See "[Developing the 'MUK_docbook' add-on Oxygen framework](developing.md)".
+
 ## License
 
 Copyright [2018] [Markup UK]
