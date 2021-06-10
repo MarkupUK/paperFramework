@@ -9,9 +9,10 @@ Developing the **MUK_docbook** framework is done on a clone of the GitHub reposi
    git clone --recurse-submodules  https://github.com/MarkupUK/paperFramework.git
    ```
 1. In Oxygen, add the directory of the Git repository as a Document Type Association framework location:
-   ![](oxygen-locations.jpg)
+   ![](oxygen-locations.png)
 1. If the **MUK_docbook** framework is also installed, disable the add-on framework and ensure that the external framework from the Git repository is enabled.
-   ![](oxygen-associations.jpg)
+   ![](oxygen-associations.png)
+   
    Ordinarily, the external framework will be enabled automatically as soon as the add-on framework is disabled.
 
 ## Updating from GitHub
@@ -42,7 +43,7 @@ BEFORE making a release on GitHub:
  - If `MUK_docbook/xsl` is modified, then in the `MUK_docbook/xsl` directory:
    - Commit all modified files on the `main` branch
    - Push the commits to GitHub
-   - On GitHub, make a release in the 'MUK-xsl' project; for example version '1.0.0' with tag `V1.0.0`
+   - On GitHub, make a release in the 'MUK-xsl' project; for example version '1.0.0' with tag `v1.0.0`
    - In your local `MUK_docbook/xsl` directory, pull the tag for the new release; for example:
      ```
 	 git pull origin v1.0.0
@@ -50,7 +51,7 @@ BEFORE making a release on GitHub:
 	 This should not change any files, because the tag corresponds to your latest commit
    - In your `paperFramework` directory, commit the modified `MUK_docbook/xsl` directory, referring to the tag of the new release:
      ```
-	 git commit -m"Update to 'MUK_xsl 1.0.0'
+	 git commit -m"Update to 'MUK_xsl 1.0.0'."
 	 ```
  - Commit all remaining hand-modified files
  - Make sure that `${version}` in `properties.xml` is correct
