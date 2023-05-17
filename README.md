@@ -24,8 +24,8 @@ The Markup UK proceedings are formatted using Antenna House Formatter. Accurate 
 
 Other 'Markup UK Paper' transformation scenarios are:
 
-- 'Markup UK Paper - GUI (Windows)' - On Windows only, opens the XSLT output (with `.xml_xslt` extension) in the AH Formatter GUI. If AH Formatter GUI is already running, the file will open in that GUI. If the transformation scenario has to start the GUI, the scenario will not terminate until the GUI is closed. If the file is already open in the GUI, the file will reopen at the current page.
-- 'Markup UK Paper - FO' - Generates an XSL-FO file with `.fo` extension. The file can be opened in the AH Formatter GUI or formatted with `AHFCmd` or opened in an editor, etc.
+- 'Markup UK Paper - GUI (Windows)' - On Windows only, opens the XSLT output (with `.xml_xslt` extension) in the Antenna House Formatter GUI. If Antenna House Formatter GUI is already running, the file will open in that GUI. If the transformation scenario has to start the GUI, the scenario will not terminate until the GUI is closed. If the file is already open in the GUI, the file will reopen at the current page.
+- 'Markup UK Paper - FO' - Generates an XSL-FO file with `.fo` extension. The file can be opened in the Antenna House Formatter GUI or formatted with `AHFCmd` or opened in an editor, etc.
 
 ### 'Antenna House' external FO processor
 
@@ -33,13 +33,15 @@ The transformation scenario expects Oxygen to have an 'Antenna House' FO process
 
 If your Oxygen is not already configured:
 
-1. Oxygen will overwrite your current FO processor configuration in the following steps, so if desired, backup your current Oxygen global options by exporting them to a file.
-1. Install AH Formatter V7.1 then restart Oxygen.
+1. Oxygen will overwrite every current FO processor configuration in the following steps, so if desired, backup your current Oxygen global options by exporting them to a file.
+1. Install Antenna House Formatter V7.3 (64-bit version) then restart Oxygen.
 1. Download https://github.com/MarkupUK/paperFramework/raw/master/resources/formatter-options/formatter-options.xml
 1. In Oxygen, under the **Options** menu, select **Import Global Options...**.
 1. Select the `formatter-options.xml` file that you downloaded then click on **Open**.
 1. When the **Import Global Options** dialog box is displayed, click on **Open**.
 1. Oxygen will advise that a restart is required, but the FO processor configuration has been made already.
+
+If you are using a different Antenna House Formatter version (for example, if these instructions have not been updated to refer to the current version), you can follow these instructions to add the FO processor configurations then edit the processor entries in the 'XML / PDF Output / FO Processors' preferences.
 
 ## Project template
 
