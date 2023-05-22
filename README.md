@@ -12,6 +12,14 @@ The **MUK_docbook** update site URL is https://github.com/MarkupUK/paperFramewor
 
 Note that oXygen will warn you that the add-on is not signed. This is expected. Oxygen will also require you to restart the editor after installing the add-on framework.
 
+## Document template
+
+**MUK_docbook** provides a sample paper as a template.
+
+## Project template
+
+**MUK_docbook** provides a template Oxygen project. When you select 'MUK_docbook' when creating a new project, the generated project includes a sample paper and also has additional transformation scenarios.
+
 ## Schematron validation
 
 **MUK_docbook** applies some extra Schematron rules when you validate your document.
@@ -42,10 +50,6 @@ If your Oxygen is not already configured:
 1. Oxygen will advise that a restart is required, but the FO processor configuration has been made already.
 
 If you are using a different Antenna House Formatter version (for example, if these instructions have not been updated to refer to the current version), you can follow these instructions to add the FO processor configurations then edit the processor entries in the 'XML / PDF Output / FO Processors' preferences.
-
-## Project template
-
-**MUK_docbook** provides a template Oxygen project. When you select 'MUK_docbook' when creating a new project, the generated project includes a sample paper and also has additional transformation scenarios.
 
 ## 'MUK_docbook' framework and Oxygen's 'DocBook 5' framework
 
