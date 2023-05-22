@@ -3,6 +3,6 @@
 <comment>Project properties for 'MUK_docbook' project.</comment>
 
 <!-- Version of current code base.  Included in generated files.
-     See instructions in 'build.xml'. -->
-<entry key="version">0.1.2</entry>
+     See instructions in 'build.xml' and 'developing.md'. -->
+<entry key="version">2023.0.0</entry>
 </properties>
