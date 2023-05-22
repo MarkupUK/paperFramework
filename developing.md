@@ -43,7 +43,7 @@ BEFORE making a release on GitHub:
  - If `MUK_docbook/xsl` is modified, then in the `MUK_docbook/xsl` directory:
    - Commit all modified files on the `main` branch
    - Push the commits to GitHub
-   - On GitHub, make a release in the 'MUK-xsl' project; for example version '1.0.0' with tag `v1.0.0`
+   - On GitHub, make a release in the 'MUK-xsl' project; for example, release 'MUK-xsl 1.0.0' with tag `v1.0.0`
    - In your local `MUK_docbook/xsl` directory, pull the tag for the new release; for example:
      ```
 	 git pull origin v1.0.0
