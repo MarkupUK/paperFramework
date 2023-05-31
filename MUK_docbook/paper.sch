@@ -80,7 +80,8 @@
                 sql92
                 tcl
                 upc
-                xml', '\s+')"/>
+                xml
+                xquery', '\s+')"/>
             <assert test=". = $allowed-langs" role="warning">Value of language attribute should be one of: <value-of select="string-join($allowed-langs, ', ')"/>; got '<value-of select="."/>'</assert>            
         </rule>
         <rule context="d:programlisting/d:co | d:screen/d:co | d:synopsis/d:co">
