@@ -43,15 +43,15 @@ BEFORE making a release on GitHub:
  - If `MUK_docbook/xsl` is modified, then in the `MUK_docbook/xsl` directory:
    - Commit all modified files on the `main` branch
    - Push the commits to GitHub
-   - On GitHub, make a release in the 'MUK-xsl' project; for example, release 'MUK-xsl 1.0.0' with tag `v1.0.0`
+   - On GitHub, make a release in the 'MUK-xsl' project; for example, release 'MUK-xsl 2023.1.0' with tag `v2023.1.0`
    - In your local `MUK_docbook/xsl` directory, pull the tag for the new release; for example:
      ```
-	 git pull origin v1.0.0
+	 git pull origin v2023.1.0
 	 ```
 	 This should not change any files, because the tag corresponds to your latest commit
    - In your `paperFramework` directory, commit the modified `MUK_docbook/xsl` directory, referring to the tag of the new release:
      ```
-	 git commit -m"Update to 'MUK_xsl 1.0.0'."
+	 git commit -m"Update to 'MUK_xsl 2023.1.0'."
 	 ```
  - Commit all remaining hand-modified files
  - Make sure that `${version}` in `properties.xml` is correct
@@ -62,8 +62,8 @@ BEFORE making a release on GitHub:
 RELEASING on GitHub
  - From https://github.com/MarkupUK/paperFramework, click on 'Releases' in the right sidebar to go to https://github.com/MarkupUK/paperFramework/releases/
  - Click on 'Draft a new release' to go to https://github.com/MarkupUK/paperFramework/releases/new
- - In the 'Tag version' field, enter `v` followed by the `${version}` value; for example, `v1.0.0`
- - In the 'Release title' field, enter `MUK_docbook` followed by the `${version}` value; for example, `MUK_docbook 1.0.0`
+ - In the 'Tag version' field, enter `v` followed by the `${version}` value; for example, `v2023.1.0`
+ - In the 'Release title' field, enter `MUK_docbook` followed by the `${version}` value; for example, `MUK_docbook 2023.1.0`
  - In the 'Describe this release' field, describe this release
  - Attach the Zip file for the current release that was generated in the local `releases` folder to the issue by either dragging it to the 'Attach binaries by dropping them here or selecting them.' field or clicking on the field and then selecting the Zip file
  - Click on 'Publish release'.
