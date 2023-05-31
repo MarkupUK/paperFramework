@@ -4,5 +4,5 @@
 
 <!-- Version of current code base.  Included in generated files.
      See instructions in 'build.xml' and 'developing.md'. -->
-<entry key="version">2023.0.0</entry>
+<entry key="version">2023.1.0</entry>
 </properties>
