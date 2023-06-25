@@ -56,8 +56,14 @@ BEFORE making a release on GitHub:
  - Commit all remaining hand-modified files
  - Make sure that `${version}` in `properties.xml` is correct
  - Run the `release` target with `-Dforce=yes`
- - Commit build.properties and the generated files with a `Releasing MUK_docbook x.y.z.` commit message
+ - Commit `properties.xml` and the generated files with a `Releasing MUK_docbook YYYY.x.y.` commit message
+     ```
+	 git commit -a -m"Releasing MUK_docbook YYYY.x.y."
+	 ```
  - Push the commits to GitHub.
+     ```
+	 git push origin master"
+	 ```
 
 RELEASING on GitHub
  - From https://github.com/MarkupUK/paperFramework, click on 'Releases' in the right sidebar to go to https://github.com/MarkupUK/paperFramework/releases/
