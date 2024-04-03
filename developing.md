@@ -96,5 +96,5 @@ Examples:
 - `2025.0.0` is the first release for the Markup UK 2025 conference.  This might include schema, schematron, and stylesheet changes compared to the last release for the previous conference, or it might just be a new tag applied to the existing code.
 - If the code in this repository is updated, the new release is `2025.1.0`.
 - If the `MUK_xsl` code is updated to, say, `2025.0.1`, then the new release is `2025.1.1`.
-- If the `MUK_xsl` code is updated to `2025.1.0`, then the new release is `2025,1,2`, indicating the second update of the `MUK_xsl` code.
+- If the `MUK_xsl` code is updated to `2025.1.0`, then the new release is `2025.1.2`, indicating the second update of the `MUK_xsl` code.
 - If it's a busy day for bug fixes and both the code in this repository and the `MUK_xsl` version are updated, then the new release is `2025.2.3`.
