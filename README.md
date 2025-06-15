@@ -49,7 +49,7 @@ If your Oxygen is not already configured:
 1. When the **Import Global Options** dialog box is displayed, click on **Open**.
 1. Oxygen will advise that a restart is required, but the FO processor configuration has been made already.
 
-If you are using a different Antenna House Formatter version (for example, if these instructions have not been updated to refer to the current version), you can follow these instructions to add the FO processor configurations then edit the processor entries in the 'XML / PDF Output / FO Processors' preferences.
+`formatter-options.xml` configures Oxygen to use the `AHFormatter` and `AHFCmd` that are first on your `PATH`. Ordinarily, this is the most recent Antenna House Formatter version that you have installed. If you want to use a specific Antenna House Formatter version, you can follow these instructions to add the FO processor configurations then edit the processor entries in the 'XML / PDF Output / FO Processors' preferences.
 
 ## 'MUK_docbook' framework and Oxygen's 'DocBook 5' framework
 
